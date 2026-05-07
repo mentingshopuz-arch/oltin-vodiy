@@ -1,0 +1,351 @@
+<!DOCTYPE html><html lang="uz"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Oltin Vodiy - Onlayn Taqdimot</title><style>
+:root {
+  --primary-blue: #0A84FF;
+  --bg-dark: #020716;
+  --text-light: #FFFFFF;
+  --text-muted: #A0A5B5;
+  --timer-bg: #FDF3E3;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+
+body {
+  background: var(--bg-dark);
+  color: var(--text-light);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Background gradient glows */
+body::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 70%;
+  height: 70%;
+  background: radial-gradient(circle, rgba(10, 132, 255, 0.08) 0%, transparent 60%);
+  z-index: -1;
+}
+
+body::after {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  right: -10%;
+  width: 70%;
+  height: 70%;
+  background: radial-gradient(circle, rgba(10, 132, 255, 0.05) 0%, transparent 60%);
+  z-index: -1;
+}
+
+.container {
+  max-width: 1240px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.content-left {
+  flex: 1;
+  max-width: 580px;
+  display: flex;
+  flex-direction: column;
+}
+
+.badge-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.tg-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.tg-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--primary-blue);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.divider {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.date-text {
+  color: #D4B872;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.main-title {
+  font-size: 46px;
+  line-height: 1.25;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.main-title .blue {
+  color: var(--primary-blue);
+}
+
+.subtitle {
+  position: relative;
+  z-index: 10;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #D0D0D0;
+  margin-bottom: 30px;
+  max-width: 500px;
+}
+
+.action-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-primary {
+  background: #0A84FF;
+  color: white;
+  text-decoration: none;
+  padding: 25.5px 32px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 4px 20px rgba(10, 132, 255, 0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+  transition: all 0.3s ease;
+  animation: pulse-button 2.2s infinite;
+}
+
+@keyframes pulse-button {
+  0% { transform: scale(1); }
+  13.63% { transform: scale(1.05); }
+  27.27% { transform: scale(1); }
+  40.91% { transform: scale(1.05); }
+  54.55% { transform: scale(1); }
+  100% { transform: scale(1); }
+}
+
+.btn-primary:hover {
+  animation-play-state: paused;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(10, 132, 255, 0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+.bottom-hint {
+  font-size: 13px;
+  color: #888;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.timer {
+  background: #FFF3E3;
+  color: #332B1E;
+  font-size: 42px;
+  font-weight: 400;
+  padding: 12px 28px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  letter-spacing: 2px;
+}
+
+.content-right {
+  flex: 1.1;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.image-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 650px;
+}
+
+.main-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  clip-path: inset(0 0 2px 0);
+}
+
+.info-card {
+  position: absolute;
+  top: 65%;
+  left: 20px;
+  z-index: 10;
+  background: rgba(15, 20, 30, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 16px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #CCC;
+  max-width: 320px;
+}
+
+.info-card strong {
+  color: white;
+  font-size: 14px;
+}
+
+/* Visibility classes */
+.mobile-timer { display: none; }
+
+/* Floating leaves removed */
+
+/* Mobile adjustments */
+@media (max-width: 992px) {
+  body {
+    align-items: flex-start;
+    padding-top: 20px;
+  }
+  .container {
+    flex-direction: column;
+    padding: 20px;
+    gap: 0;
+  }
+  
+  .date-label { display: none; }
+  
+  .content-left {
+    text-align: center;
+    max-width: 100%;
+    align-items: center;
+  }
+
+  .badge-row {
+    justify-content: center;
+  }
+  
+  .main-title {
+    font-size: 22px;
+    margin-bottom: 5px;
+  }
+  
+  .image-container {
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .subtitle {
+    position: relative;
+    z-index: 10;
+    margin: -20px auto 25px auto; /* Tightened gap around subtitle */
+    padding: 0 10px;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .action-row {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    gap: 0;
+  }
+
+  .btn-group {
+    width: 100%;
+    max-width: 100%; /* Made button full width */
+    margin-bottom: 30px;
+    padding: 0 10px; /* Slight padding from screen edges */
+  }
+
+  .btn-primary {
+    width: 100%;
+  }
+
+  .desktop-timer { display: none; }
+  
+  .mobile-timer {
+    display: inline-flex;
+    margin-top: 10px;
+  }
+
+  .info-card {
+    top: 70%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    text-align: left;
+    max-width: 320px;
+  }
+}
+
+</style><link rel="preload" as="image" href="assets/image3.webp"></head><body><div class="container"><div class="content-left"><div class="badge-row"><div class="tg-badge"><div class="tg-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></div><span>ONLAYN TAQDIMOT</span></div><span class="divider">|</span><span class="date-text"><span class="date-label">SANA: </span>15-MAY 20:00</span></div><h1 class="main-title">
+                <span class="blue">BOSHLANG'ICH TO'LOVSIZ, 60 OYGA</span><br>FOIZ VA PENIYALARSIZ BO'LIB<br>TO'LASHGA XONADON XARID QILING
+            </h1><div class="image-container"><img src="assets/image3.webp" width="500" height="438" fetchpriority="high" decoding="async" alt="Oltin Vodiy Building" class="main-img"></div><p class="subtitle">
+                "Oltin Vodiy" TJM xonadonlari onlayn taqdimotiga qatnashish
+                uchun telegram kanalimizga o'ting va obuna bo'ling
+            </p><div class="action-row"><div class="btn-group"><a href="#" class="btn-primary">
+                        TELEGRAM KANALGA O'TISH
+                    </a><p class="bottom-hint">
+                        Telegram kanalga o'tib "OBUNA"<br>
+                        tugmasini bosishni unutmang
+                    </p></div><div class="timer desktop-timer"><span id="min-d">00</span>:<span id="sec-d">00</span></div></div><div class="timer mobile-timer"><span id="min-m">00</span>:<span id="sec-m">00</span></div></div></div><script>
+        let timeLeft = 120; // 2 minutes in seconds
+        
+        function updateTimers() {
+            const m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+            const s = (timeLeft % 60).toString().padStart(2, '0');
+            
+            const minD = document.getElementById('min-d');
+            const secD = document.getElementById('sec-d');
+            const minM = document.getElementById('min-m');
+            const secM = document.getElementById('sec-m');
+            
+            if (minD) minD.textContent = m;
+            if (secD) secD.textContent = s;
+            if (minM) minM.textContent = m;
+            if (secM) secM.textContent = s;
+        }
+        
+        setTimeout(() => {
+            updateTimers();
+            setInterval(() => {
+                if (timeLeft <= 0) return;
+                timeLeft--;
+                updateTimers();
+            }, 1000);
+        }, 100);
+    </script></body></html>
