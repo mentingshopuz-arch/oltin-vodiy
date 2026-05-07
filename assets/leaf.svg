@@ -1,0 +1,14 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#88d49e" />
+      <stop offset="50%" stop-color="#4caf50" />
+      <stop offset="100%" stop-color="#2e7d32" />
+    </linearGradient>
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="1" />
+    </filter>
+  </defs>
+  <path d="M10,90 Q10,40 50,10 Q90,10 90,50 Q90,90 10,90 Z" fill="url(#leafGrad)" filter="url(#blur)" opacity="0.85"/>
+  <path d="M10,90 Q50,50 90,10" stroke="#388e3c" stroke-width="2" fill="none" opacity="0.6"/>
+</svg>
